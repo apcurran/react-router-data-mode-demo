@@ -1,8 +1,18 @@
-import { useState } from "react";
+import { useLoaderData } from "react-router";
+
 import "./App.css";
 
+async function loader({ params }) {
+    const API_URL = "https://jsonplaceholder.typicode.com/posts?_limit=10";
+    const response = await fetch(API_URL);
+    const data = await response.json();
+
+    return data;
+}
+
 function App() {
-    const [count, setCount] = useState(0);
+    const posts = useLoaderData();
+    console.log(posts);
 
     return (
         <>
@@ -11,4 +21,5 @@ function App() {
     );
 }
 
+export { loader };
 export default App;
