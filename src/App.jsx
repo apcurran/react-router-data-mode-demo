@@ -1,6 +1,7 @@
 import { useLoaderData } from "react-router";
 
 import "./App.css";
+import PostList from "./components/ui/PostList";
 
 async function loader({ params }) {
     const API_URL = "https://jsonplaceholder.typicode.com/posts?_limit=10";
@@ -12,12 +13,12 @@ async function loader({ params }) {
 
 function App() {
     const posts = useLoaderData();
-    console.log(posts);
 
     return (
-        <>
-            <div>Hello World</div>
-        </>
+        <main>
+            <h1>Recent Posts</h1>
+            <PostList posts={posts} />
+        </main>
     );
 }
 
