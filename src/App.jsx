@@ -16,7 +16,7 @@ function App() {
 
     return (
         <main>
-            <h1>Recent Posts</h1>
+            <h1 className="page-title">Recent Posts</h1>
             <PostList posts={posts} />
         </main>
     );
