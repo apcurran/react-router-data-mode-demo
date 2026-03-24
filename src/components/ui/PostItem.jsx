@@ -1,6 +1,6 @@
 function PostItem({ post }) {
     return (
-        <li>
+        <li className="post-item">
             <article>
                 <h2>{post.title}</h2>
                 <p>{post.body}</p>

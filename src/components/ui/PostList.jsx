@@ -2,7 +2,7 @@ import PostItem from "./PostItem";
 
 function PostList({ posts }) {
     return (
-        <ul>
+        <ul className="post-list">
             {posts.map((post) => (
                 <PostItem key={post.id} post={post} />
             ))}
