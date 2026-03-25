@@ -16,9 +16,15 @@ async function loader({ params }) {
 
 function PostDetail() {
     const post = useLoaderData();
-    console.log(post);
 
-    return <div>My POst</div>;
+    return (
+        <main>
+            <h1 className="page-title">{post.title}</h1>
+            <article>
+                <p>{post.body}</p>
+            </article>
+        </main>
+    );
 }
 
 export { loader };
