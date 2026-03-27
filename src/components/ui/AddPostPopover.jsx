@@ -49,6 +49,23 @@ function AddPostPopover() {
             {/* popover elem */}
             <div id="post-form-popover" popover="auto" ref={popoverRef} className="form-popover">
                 <form action={formAction}>
+                    <h3>New Post</h3>
+                    <input
+                        name="title"
+                        placeholder="Title"
+                        type="text"
+                        required
+                        disabled={isPending}
+                    />
+                    <textarea
+                        name="body"
+                        placeholder="Your content here..."
+                        required
+                        disabled={isPending}
+                    ></textarea>
+                    <button type="submit" disabled={isPending}>
+                        {isPending ? "Saving Post..." : "Create Post"}
+                    </button>
                     <button type="button" onClick={() => popoverRef.current.hidePopover()}>
                         Cancel
                     </button>
