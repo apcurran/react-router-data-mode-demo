@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router";
+import { useLoaderData, Form, redirect } from "react-router";
 
 async function loader({ params }) {
     const { id } = params;
@@ -14,6 +14,26 @@ async function loader({ params }) {
     return data;
 }
 
+async function deletePost(params) {
+    const { id } = params;
+
+    try {
+        const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
+            method: "DELETE",
+        });
+
+        if (!response.ok) {
+            throw new Error("Error deleting post!");
+        }
+
+        return redirect("/"); // go home after successful deletion of post
+    } catch (err) {
+        console.error("Post deletion error:", err);
+
+        throw err;
+    }
+}
+
 function PostDetail() {
     const post = useLoaderData();
 
@@ -23,9 +43,12 @@ function PostDetail() {
             <article>
                 <p>{post.body}</p>
             </article>
+            <Form method="delete">
+                <button>Delete Post</button>
+            </Form>
         </main>
     );
 }
 
-export { loader };
+export { loader, deletePost };
 export default PostDetail;
