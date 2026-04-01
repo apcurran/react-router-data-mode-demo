@@ -10,3 +10,15 @@
 .post-item {
     margin-bottom: 3rem;
 }
+
+@scope (.navbar) {
+    :scope {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    ul {
+        display: flex;
+        gap: 2rem;
+    }
+}
