@@ -17,14 +17,16 @@ function App() {
     const posts = useLoaderData();
 
     return (
-        <div className="wrapper-site">
+        <>
             <Nav />
-            <main>
-                <h1 className="page-title">Recent Posts</h1>
-                <AddPostPopover />
-                <PostList posts={posts} />
-            </main>
-        </div>
+            <div className="wrapper-site">
+                <main>
+                    <h1 className="page-title">Recent Posts</h1>
+                    <AddPostPopover />
+                    <PostList posts={posts} />
+                </main>
+            </div>
+        </>
     );
 }
 

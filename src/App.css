@@ -1,3 +1,8 @@
+.wrapper-site {
+    margin-inline: auto;
+    width: min(90rem, 90%);
+}
+
 .page-title {
     margin-bottom: 5rem;
 }
@@ -15,6 +20,7 @@
     :scope {
         display: flex;
         justify-content: flex-end;
+        padding-inline: 4rem;
     }
 
     ul {
