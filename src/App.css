@@ -25,7 +25,8 @@
 
     ul {
         display: flex;
-        gap: 2rem;
+        gap: 2.5rem;
+        list-style: none;
     }
 
     a {
