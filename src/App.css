@@ -16,6 +16,10 @@
     margin-bottom: 3rem;
 }
 
+[popover]::backdrop {
+    background-color: rgb(0 0 0 / 0.8);
+}
+
 @scope (.navbar) {
     :scope {
         display: flex;
