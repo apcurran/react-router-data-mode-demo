@@ -3,7 +3,6 @@ import { useLoaderData } from "react-router";
 import "./App.css";
 import PostList from "./components/ui/PostList";
 import AddPostPopover from "./components/ui/AddPostPopover";
-import Nav from "./components/ui/Nav";
 
 async function loader({ params }) {
     const API_URL = "https://jsonplaceholder.typicode.com/posts?_limit=10";
@@ -18,14 +17,9 @@ function App() {
 
     return (
         <>
-            <Nav />
-            <div className="wrapper-site">
-                <main>
-                    <h1 className="page-title">Recent Posts</h1>
-                    <AddPostPopover />
-                    <PostList posts={posts} />
-                </main>
-            </div>
+            <h1 className="page-title">Recent Posts</h1>
+            <AddPostPopover />
+            <PostList posts={posts} />
         </>
     );
 }

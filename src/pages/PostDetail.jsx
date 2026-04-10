@@ -1,5 +1,4 @@
 import { useLoaderData, Form, redirect } from "react-router";
-import Nav from "../components/ui/Nav";
 
 async function loader({ params }) {
     const { id } = params;
@@ -39,18 +38,15 @@ function PostDetail() {
     const post = useLoaderData();
 
     return (
-        <div className="wrapper-site">
-            <Nav />
-            <main>
-                <h1 className="page-title">{post.title}</h1>
-                <article>
-                    <p>{post.body}</p>
-                </article>
-                <Form method="delete">
-                    <button>Delete Post</button>
-                </Form>
-            </main>
-        </div>
+        <>
+            <h1 className="page-title">{post.title}</h1>
+            <article>
+                <p>{post.body}</p>
+            </article>
+            <Form method="delete">
+                <button>Delete Post</button>
+            </Form>
+        </>
     );
 }
 
