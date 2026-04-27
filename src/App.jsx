@@ -4,7 +4,7 @@ import "./App.css";
 import PostList from "./components/ui/PostList";
 import AddPostPopover from "./components/ui/AddPostPopover";
 
-async function loader({ params }) {
+async function loader() {
     const API_URL = "https://jsonplaceholder.typicode.com/posts?_limit=10";
     const response = await fetch(API_URL);
     const data = await response.json();
