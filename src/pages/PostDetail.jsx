@@ -1,5 +1,5 @@
-import { useRef } from "react";
-import { useLoaderData, Form, redirect } from "react-router";
+import { useEffect, useRef } from "react";
+import { useLoaderData, useActionData, Form, redirect } from "react-router";
 
 async function loader({ params }) {
     const { id } = params;
@@ -45,7 +45,7 @@ async function editPost(params, formData) {
         throw new Error("Editing post failed.");
     }
 
-    return { ok: true }; // return null re-validates the loader automatically
+    return await response.json();
 }
 
 async function deletePost(params) {
@@ -69,7 +69,10 @@ async function deletePost(params) {
 }
 
 function PostDetail() {
-    const post = useLoaderData();
+    const loaderData = useLoaderData();
+    const actionData = useActionData();
+    const post = actionData || loaderData; // default to action first, then loader
+
     const popoverRef = useRef(null);
 
     return (
