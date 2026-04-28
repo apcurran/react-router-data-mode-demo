@@ -14,6 +14,39 @@ async function loader({ params }) {
     return data;
 }
 
+async function action({ request, params }) {
+    if (request.method === "DELETE") {
+        return deletePost(params);
+    } else if (request.method === "PATCH") {
+        const formData = await request.formData();
+
+        return editPost(params, formData);
+    }
+}
+
+async function editPost(params, formData) {
+    const { id } = params;
+    const title = formData.get("title");
+    const body = formData.get("body");
+
+    const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
+        method: "PATCH",
+        body: JSON.stringify({
+            title,
+            body,
+        }),
+        headers: {
+            "Content-type": "application/json; charset=UTF-8",
+        },
+    });
+
+    if (!response.ok) {
+        throw new Error("Editing post failed.");
+    }
+
+    return redirect(`/posts/${id}`);
+}
+
 async function deletePost(params) {
     const { id } = params;
 
@@ -43,6 +76,9 @@ function PostDetail() {
             <article>
                 <p>{post.body}</p>
             </article>
+            <Form method="patch">
+                <button>Edit Post</button>
+            </Form>
             <Form method="delete">
                 <button>Delete Post</button>
             </Form>
@@ -50,5 +86,5 @@ function PostDetail() {
     );
 }
 
-export { loader, deletePost };
+export { loader, action };
 export default PostDetail;
