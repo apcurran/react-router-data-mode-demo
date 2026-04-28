@@ -45,7 +45,7 @@ async function editPost(params, formData) {
         throw new Error("Editing post failed.");
     }
 
-    return redirect(`/posts/${id}`);
+    return { ok: true }; // return null re-validates the loader automatically
 }
 
 async function deletePost(params) {
