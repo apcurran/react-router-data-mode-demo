@@ -82,7 +82,18 @@ function PostDetail() {
             <div id="edit-post-popover" className="form-popover" popover="auto" ref={popoverRef}>
                 <Form method="patch">
                     <h2>Edit Current Post</h2>
-                    <button>Apply Edit</button>
+                    <div className="form-group">
+                        <input name="title" type="text" defaultValue={post.title} required />
+                    </div>
+                    <div className="form-group">
+                        <textarea name="body" defaultValue={post.body} required />
+                    </div>
+                    <div className="form-group">
+                        <button type="submit">Save</button>
+                        <button type="button" onClick={() => popoverRef.current.hidePopover()}>
+                            Cancel
+                        </button>
+                    </div>
                 </Form>
             </div>
             <Form method="delete">
