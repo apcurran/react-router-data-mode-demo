@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { useLoaderData, Form, redirect } from "react-router";
 
 async function loader({ params }) {
@@ -69,6 +70,7 @@ async function deletePost(params) {
 
 function PostDetail() {
     const post = useLoaderData();
+    const popoverRef = useRef(null);
 
     return (
         <>
@@ -76,9 +78,11 @@ function PostDetail() {
             <article>
                 <p>{post.body}</p>
             </article>
-            <Form method="patch">
-                <button>Edit Post</button>
-            </Form>
+            <div id="edit-post-popover" className="form-popover" popover="auto" ref={popoverRef}>
+                <Form method="patch">
+                    <button>Edit Post</button>
+                </Form>
+            </div>
             <Form method="delete">
                 <button>Delete Post</button>
             </Form>
