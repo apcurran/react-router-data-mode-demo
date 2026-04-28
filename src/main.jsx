@@ -6,7 +6,10 @@ import "./index.css";
 import Layout from "./components/layout/Layout.jsx";
 import App, { loader as appLoader } from "./App.jsx";
 import About from "./pages/About.jsx";
-import PostDetail, { deletePost, loader as postDetailLoader } from "./pages/PostDetail.jsx";
+import PostDetail, {
+    action as postDetailAction,
+    loader as postDetailLoader,
+} from "./pages/PostDetail.jsx";
 
 const router = createBrowserRouter([
     {
@@ -26,7 +29,7 @@ const router = createBrowserRouter([
                 path: "/posts/:id",
                 Component: PostDetail,
                 loader: postDetailLoader,
-                action: deletePost,
+                action: postDetailAction,
             },
         ],
     },
