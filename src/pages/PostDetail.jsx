@@ -75,6 +75,13 @@ function PostDetail() {
 
     const popoverRef = useRef(null);
 
+    useEffect(() => {
+        if (actionData && popoverRef.current) {
+            // close popup form after submitting an edit req
+            popoverRef.current.hidePopover();
+        }
+    }, [actionData]);
+
     return (
         <>
             <h1 className="page-title">{post.title}</h1>
