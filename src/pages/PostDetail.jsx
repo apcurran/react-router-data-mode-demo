@@ -88,7 +88,12 @@ function PostDetail() {
             <article>
                 <p>{post.body}</p>
             </article>
-            <button popoverTarget="edit-post-popover">Edit Post</button>
+            <div className="post-details-buttons-group">
+                <button popoverTarget="edit-post-popover">Edit Post</button>
+                <Form method="delete">
+                    <button>Delete Post</button>
+                </Form>
+            </div>
             <div id="edit-post-popover" className="form-popover" popover="auto" ref={popoverRef}>
                 <Form method="patch">
                     <h2>Edit Current Post</h2>
@@ -106,9 +111,6 @@ function PostDetail() {
                     </div>
                 </Form>
             </div>
-            <Form method="delete">
-                <button>Delete Post</button>
-            </Form>
         </>
     );
 }
