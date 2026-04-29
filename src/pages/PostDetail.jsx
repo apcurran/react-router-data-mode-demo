@@ -89,7 +89,9 @@ function PostDetail() {
                 <p>{post.body}</p>
             </article>
             <div className="post-details-buttons-group">
-                <button popoverTarget="edit-post-popover">Edit Post</button>
+                <button popoverTarget="edit-post-popover" popoverTargetAction="show">
+                    Edit Post
+                </button>
                 <Form method="delete">
                     <button>Delete Post</button>
                 </Form>
@@ -105,7 +107,11 @@ function PostDetail() {
                     </div>
                     <div className="form-group">
                         <button type="submit">Save</button>
-                        <button type="button" onClick={() => popoverRef.current.hidePopover()}>
+                        <button
+                            type="button"
+                            popovertarget="edit-post-popover"
+                            popoverTargetAction="hide"
+                        >
                             Cancel
                         </button>
                     </div>
